@@ -1,12 +1,12 @@
 package com.spring_mvc.mybatis.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.spring_mvc.mybatis.service.ProductService;
 import com.spring_mvc.mybatis.vo.ProductVO;
@@ -77,5 +77,95 @@ public class ProductController {
 	public String deleteProduct(@PathVariable String prdNo){
 		service.deleteProduct(prdNo);
 		return "redirect:/product/listAllProduct";
+	}
+
+	////////////////////////////////////////////////////////
+	//상품번호 중복 확인 - 비동기 요청에 대한 응답
+	@ResponseBody
+	@RequestMapping("/product/prdNoCheck")
+	public String prdNoCheck(@RequestParam("prdNo") String prdNo){
+		String res = service.prdNoCheck(prdNo);
+
+		return res;	//응답 객체의 body로 구성됨 -> 클라이언트에게 직접 전달
+	}
+
+	@ResponseBody
+	@RequestMapping("/product/prdNoCheck1/{prdNo}")
+	public String prdNoCheck1(@PathVariable String prdNo){
+		String res = service.prdNoCheck(prdNo);
+
+		return res;	//응답 객체의 body로 구성됨 -> 클라이언트에게 직접 전달
+	}
+
+	@ResponseBody
+	@RequestMapping("/product/prdNoCheck2/{prdNo}")
+	public String prdNoCheck2(@PathVariable String prdNo){
+		String res = service.prdNoCheck(prdNo);
+
+		return res;	//응답 객체의 body로 구성됨 -> 클라이언트에게 직접 전달
+	}
+
+	//클라이언트 비동기 요청시 요청 body에 data가 포함되어 있음 : @RequestBody
+	@ResponseBody
+	@RequestMapping("/product/prdNoCheck3")
+	public String prdNoCheck3(@RequestBody String prdNo){
+		String res = service.prdNoCheck(prdNo);
+
+		return res;	//응답 객체의 body로 구성됨 -> 클라이언트에게 직접 전달
+	}
+
+	@ResponseBody
+	@RequestMapping("/product/prdNoCheck4/{prdNo}")
+	public String prdNoCheck4(@PathVariable String prdNo){
+		String res = service.prdNoCheck(prdNo);
+
+		return res;	//응답 객체의 body로 구성됨 -> 클라이언트에게 직접 전달
+	}
+
+	@ResponseBody
+	@RequestMapping("/product/prdNoCheck5")
+	public String prdNoCheck5(@RequestBody HashMap<String, String> map){
+		System.out.println(map.get("prdNo"));
+		String prdNo = map.get("prdNo");
+		String res = service.prdNoCheck(prdNo);
+
+		return res;	//응답 객체의 body로 구성됨 -> 클라이언트에게 직접 전달
+	}
+
+	/////////////////////상품 검색/////////////////////
+	@RequestMapping("/product/productSearchForm1")
+	public String viewSearchForm1(){
+		return "product/productSearchForm1";
+	}
+
+	@RequestMapping("/product/productSearchForm2")
+	public String viewSearchForm2(){
+		return "product/productSearchForm2";
+	}
+
+	@RequestMapping("/product/productSearchForm3")
+	public String viewSearchForm3(){
+		return "product/productSearchForm3";
+	}
+
+	@RequestMapping("/product/productSearchForm4")
+	public String viewSearchForm4(){
+		return "product/productSearchForm4";
+	}
+
+	@ResponseBody
+	@RequestMapping("/product/productSearch1")
+	public ArrayList<ProductVO> productSearch1(@RequestParam HashMap<String, Object> param, Model model){
+		ArrayList<ProductVO> prdList = service.productSearch(param);
+		//model.addAttribute("prdList", prdList);
+		return prdList; //ArrayList 객체 자체 반환은 불가 -> json 형태로 변환(jakson-databind 후 변환)
+	}
+	//상품검색 : 방법 2(view 반환)
+	//ArrayList<ProductVO> 타입의 객체가 반환
+	@RequestMapping("/product/productSearch2")
+	public String productSearch2(@RequestParam HashMap<String, Object> param, Model model) {
+		ArrayList<ProductVO> prdList = service.productSearch(param);
+		model.addAttribute("prdList", prdList);
+		return "product/productSearchResultView";
 	}
 }

@@ -6,6 +6,14 @@
 <head>
     <meta charset="UTF-8">
     <title>도서 정보 등록</title>
+    <script src="<c:url value='/js/jquery-3.7.1.min.js'/>"></script>
+    <script src="<c:url value='/webjars/axios/1.7.2/dist/axios.min.js'/>"></script>
+    <!-- <script src="<c:url value='/js/bookNoCheck.js'/>"></script> -->
+    <!-- <script src="<c:url value='/js/bookNoCheck1.js'/>"></script> -->
+    <!-- <script src="<c:url value='/js/bookNoCheck2.js'/>"></script> -->
+    <!-- <script src="<c:url value='/js/bookNoCheck3.js'/>"></script> -->
+    <!-- <script src="<c:url value='/js/bookNoCheck4.js'/>"></script> -->
+    <script src="<c:url value='/js/bookNoCheck5.js'/>"></script>
     <style>
         body, form, h1{ text-align:center; }
         table { margin: 0 auto; margin-bottom:20px; text-align:left; }
@@ -26,7 +34,10 @@
             <tbody>
             <tr>
                 <th><label for="bookNo">도서번호</label></th>
-                <td><input type="text" name="bookNo" id="bookNo" /></td>
+                <td>
+                    <input type="text" name="bookNo" id="bookNo" />
+                    <button id="bookNoCheckBtn" type="button">중복확인</button>
+                </td>
             </tr>
             <tr>
                 <th><label for="bookName">도서명</label></th>

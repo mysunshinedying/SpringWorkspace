@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>복권 당첨시 주의사항 | 욱협은행 복권</title>
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --paper: #ffffff;
+      --surface: #f4f4f5;
+      --border: #c8c8c8;
+      --border-strong: #000000;
+      --muted: #3d3d3d;
+      --header-bg: #111111;
+      --header-text: #ffffff;
+      --subnav-bg: #e8e8e8;
+      --accent: #000000;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      background: var(--surface);
+      color: var(--ink);
+      line-height: 1.55;
+      font-size: 16px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    /* ----- 상단 사이트 헤더 ----- */
+    .site-header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      border-bottom: 3px solid var(--border-strong);
+    }
+
+    .site-header__inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--header-text);
+      text-decoration: none;
+    }
+
+    .logo:hover {
+      color: var(--header-text);
+    }
+
+    .logo-sub {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      opacity: 0.92;
+      margin-top: 2px;
+      letter-spacing: 0.02em;
+    }
+
+    .header-util {
+      display: flex;
+      align-items: center;
+      gap: 8px 18px;
+      font-size: 0.8125rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-util a {
+      color: var(--header-text);
+      text-decoration: none;
+      opacity: 0.95;
+    }
+
+    .header-util a:hover {
+      text-decoration: underline;
+    }
+
+    /* ----- 서브 네비게이션 ----- */
+    .subnav {
+      background: var(--subnav-bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .subnav__inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 4px;
+      font-size: 0.875rem;
+    }
+
+    .subnav__inner a {
+      color: var(--ink);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 2px;
+    }
+
+    .subnav__inner a:hover {
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    .subnav__inner a[aria-current="page"] {
+      font-weight: 700;
+      background: var(--paper);
+      border: 1px solid var(--border-strong);
+    }
+
+    .subnav__sep {
+      color: #888;
+      user-select: none;
+    }
+
+    /* ----- 메인 레이아웃 ----- */
+    .main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 20px 56px;
+    }
+
+    .breadcrumb {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      margin: 0 0 20px;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .breadcrumb li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .breadcrumb a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+      color: var(--ink);
+    }
+
+    .page-head {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      padding: 22px 24px 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+    }
+
+    .page-head h1 {
+      margin: 0 0 8px;
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+
+    .page-head__lead {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--muted);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 880px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .aside {
+        order: 2;
+      }
+    }
+
+    /* ----- 사이드 목차 ----- */
+    .aside {
+      position: sticky;
+      top: 16px;
+    }
+
+    .toc {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc__title {
+      margin: 0;
+      padding: 12px 14px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      background: #ececec;
+    }
+
+    .toc ul {
+      list-style: none;
+      margin: 0;
+      padding: 8px 0;
+    }
+
+    .toc a {
+      display: block;
+      padding: 10px 14px;
+      font-size: 0.875rem;
+      text-decoration: none;
+      color: var(--ink);
+      border-left: 3px solid transparent;
+    }
+
+    .toc a:hover {
+      background: var(--surface);
+    }
+
+    .toc a:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: -2px;
+    }
+
+    /* ----- 본문 패널 ----- */
+    .article {
+      min-width: 0;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .panel__head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(to bottom, #fafafa, #f0f0f0);
+    }
+
+    .panel__num {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 0.75rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .panel h2 {
+      margin: 0;
+      font-size: 1.0625rem;
+      font-weight: 800;
+    }
+
+    .panel__body {
+      padding: 18px 20px 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border-strong);
+      background: var(--paper);
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border-strong);
+      padding: 12px 14px;
+      vertical-align: middle;
+      font-size: 0.9375rem;
+    }
+
+    .table-payout th {
+      background: #efefef;
+      font-weight: 700;
+    }
+
+    .table-payout th,
+    .table-payout td {
+      text-align: center;
+    }
+
+    .table-info td.label {
+      text-align: center;
+      width: 22%;
+      min-width: 7.5rem;
+      font-weight: 700;
+      background: #efefef;
+      white-space: nowrap;
+    }
+
+    .table-info td.detail {
+      text-align: left;
+      padding-left: 18px;
+      padding-right: 18px;
+      line-height: 1.6;
+    }
+
+    .head-office {
+      margin: 0 0 10px;
+      font-size: 0.9375rem;
+    }
+
+    .head-office:last-child {
+      margin-bottom: 0;
+    }
+
+    .note {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .info-box {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border: 1px dashed var(--border);
+      background: #fafafa;
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+
+    /* ----- 푸터 ----- */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: #e6e6e6;
+      padding: 28px 20px 32px;
+    }
+
+    .site-footer__inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin: 0 0 14px;
+      padding: 0;
+      list-style: none;
+      font-size: 0.8125rem;
+    }
+
+    .footer-links a {
+      color: var(--ink);
+    }
+
+    .copyright {
+      margin: 0;
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ----- 인쇄 / 300ppi 캡처 ----- */
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm 14mm;
+      }
+
+      body {
+        background: #fff;
+        font-size: 11pt;
+      }
+
+      .site-header,
+      .subnav,
+      .site-footer {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .header-util {
+        display: none;
+      }
+
+      .subnav__inner {
+        padding: 6pt 0;
+        font-size: 8.5pt;
+      }
+
+      .site-header {
+        border-bottom: 2pt solid #000;
+      }
+
+      .site-header__inner {
+        padding: 8pt 0;
+      }
+
+      .logo {
+        font-size: 14pt;
+      }
+
+      .logo-sub {
+        font-size: 8pt;
+      }
+
+      .main {
+        padding: 12pt 0 0;
+        max-width: none;
+      }
+
+      .breadcrumb {
+        font-size: 9pt;
+        margin-bottom: 10pt;
+      }
+
+      .page-head {
+        box-shadow: none;
+        padding: 12pt 14pt;
+        margin-bottom: 14pt;
+        border-left-width: 3pt;
+      }
+
+      .page-head h1 {
+        font-size: 16pt;
+      }
+
+      .page-head__lead {
+        font-size: 10pt;
+      }
+
+      .layout {
+        display: block;
+      }
+
+      .aside {
+        display: none;
+      }
+
+      .panel {
+        box-shadow: none;
+        margin-bottom: 12pt;
+        break-inside: avoid;
+      }
+
+      .panel__head {
+        padding: 10pt 12pt;
+        background: #f0f0f0 !important;
+      }
+
+      .panel__num {
+        width: 20pt;
+        height: 20pt;
+        font-size: 8pt;
+      }
+
+      .panel h2 {
+        font-size: 11pt;
+      }
+
+      .panel__body {
+        padding: 12pt 14pt 14pt;
+      }
+
+      th,
+      td {
+        padding: 8pt 10pt;
+        font-size: 10pt;
+      }
+
+      .table-info td.detail {
+        font-size: 10pt;
+      }
+
+      .head-office {
+        font-size: 10pt;
+      }
+
+      .note {
+        color: #333 !important;
+      }
+
+      .info-box {
+        font-size: 9pt;
+        background: #fafafa !important;
+      }
+
+      a[href^="#"] {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="#">
+        욱협은행
+        <span class="logo-sub">UKHYEOP BANK</span>
+      </a>
+      <ul class="header-util">
+        <li><a href="#">인터넷뱅킹</a></li>
+        <li><a href="#">고객센터</a></li>
+        <li><a href="#">ENGLISH</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="복권 하위 메뉴">
+    <div class="subnav__inner">
+      <a href="#">복권 홈</a>
+      <span class="subnav__sep" aria-hidden="true">|</span>
+      <a href="#">당첨 확인</a>
+      <span class="subnav__sep" aria-hidden="true">|</span>
+      <a href="#" aria-current="page">당첨자 안내</a>
+      <span class="subnav__sep" aria-hidden="true">|</span>
+      <a href="#">판매점 찾기</a>
+      <span class="subnav__sep" aria-hidden="true">|</span>
+      <a href="#">자주 묻는 질문</a>
+    </div>
+  </nav>
+
+  <main class="main" id="main">
+    <ol class="breadcrumb">
+      <li><a href="#">홈</a></li>
+      <li aria-hidden="true">›</li>
+      <li><a href="#">복권</a></li>
+      <li aria-hidden="true">›</li>
+      <li><a href="#">당첨자 안내</a></li>
+      <li aria-hidden="true">›</li>
+      <li aria-current="page">당첨금 지급 안내</li>
+    </ol>
+
+    <header class="page-head">
+      <h1>복권 당첨시 주의사항</h1>
+      <p class="page-head__lead">
+        당첨금 지급 장소, 본점 위치, 지급 기한 및 유의사항을 안내합니다.
+      </p>
+    </header>
+
+    <div class="layout">
+      <aside class="aside" aria-label="이 페이지 목차">
+        <nav class="toc">
+          <p class="toc__title">이 페이지 안내</p>
+          <ul>
+            <li><a href="#sec-payout">지급장소 안내</a></li>
+            <li><a href="#sec-branch">욱협은행 본점 안내</a></li>
+            <li><a href="#sec-deadline">지급기한 및 기타 안내</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="article">
+        <section class="panel" id="sec-payout" aria-labelledby="heading-payout">
+          <div class="panel__head">
+            <span class="panel__num" aria-hidden="true">1</span>
+            <h2 id="heading-payout">지급장소 안내</h2>
+          </div>
+          <div class="panel__body">
+            <table class="table-payout" role="table" aria-label="지급장소 안내">
+              <thead>
+                <tr>
+                  <th scope="col">당첨금</th>
+                  <th scope="col">지급장소</th>
+                  <th scope="col">준비물</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1등</td>
+                  <td>욱협은행 본점</td>
+                  <td>당첨복권, 신분증</td>
+                </tr>
+                <tr>
+                  <td>2등, 3등</td>
+                  <td>욱협은행 각 지점</td>
+                  <td>당첨복권, 신분증</td>
+                </tr>
+                <tr>
+                  <td>4등 이하</td>
+                  <td>일반판매점 또는 욱협은행 각 지점</td>
+                  <td>당첨복권</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel" id="sec-branch" aria-labelledby="heading-branch">
+          <div class="panel__head">
+            <span class="panel__num" aria-hidden="true">2</span>
+            <h2 id="heading-branch">욱협은행 본점 안내</h2>
+          </div>
+          <div class="panel__body">
+            <p class="head-office">
+              서울시 중구 충정로4가 15번지 4층 욱협은행 복권사업팀
+              <span class="note">(시나리오에만 있는 주소입니다)</span>
+            </p>
+            <p class="head-office">
+              문의전화 1511-5313
+              <span class="note">(시나리오에만 있는 번호입니다)</span>
+            </p>
+            <p class="info-box">
+              방문 전 운영 시간 및 휴무일은 고객센터 또는 홈페이지 공지를 확인해 주세요.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel" id="sec-deadline" aria-labelledby="heading-deadline">
+          <div class="panel__head">
+            <span class="panel__num" aria-hidden="true">3</span>
+            <h2 id="heading-deadline">지급기한 및 기타 안내</h2>
+          </div>
+          <div class="panel__body">
+            <table class="table-info" role="table" aria-label="지급기한 및 기타 안내">
+              <tbody>
+                <tr>
+                  <td class="label">지급 기한</td>
+                  <td class="detail">
+                    지급 기한은 해당 회차 당첨자 발표일로부터 1년입니다. 공휴일 또는 토, 일요일에는 영업하지 않으니 다음 영업일에 청구 가능합니다. 지급기한일 초과시 미수령된 당첨액은 사회에 기증됩니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label">지급 방법</td>
+                  <td class="detail">
+                    금액은 전액 당첨자의 욱협은행 통장에 일시불로 지급됩니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label">주의사항</td>
+                  <td class="detail">
+                    티켓 후면에 반드시 성명과 주민등록번호를 기입 후 서명해주세요.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <ul class="footer-links">
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">신용정보활용체제</a></li>
+        <li><a href="#">전자금융거래약관</a></li>
+        <li><a href="#">사이트맵</a></li>
+      </ul>
+      <p class="copyright">
+        © 욱협은행. 본 페이지는 교육용 시나리오를 위한 예시 화면입니다.<br />
+        서울시 중구 (시나리오 주소) · 대표전화 0000-0000(예시)
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

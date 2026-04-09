@@ -15,6 +15,7 @@
         <module name="di_01" />
         <module name="project" />
         <module name="jdbc" />
+        <module name="mybatis (1)" />
         <module name="second" />
       </profile>
     </annotationProcessing>
@@ -26,6 +27,7 @@
       <module name="jdbc" options="-Xlint:all" />
       <module name="jdbc2" options="-Xlint:all" />
       <module name="mybatis" options="-Xlint:all" />
+      <module name="mybatis (1)" options="-Xlint:all" />
       <module name="mybatisEx" options="-Xlint:all" />
       <module name="project" options="-Xlint:all" />
       <module name="second" options="-Xlint:all" />

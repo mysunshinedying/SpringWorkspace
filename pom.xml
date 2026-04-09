@@ -20,6 +20,7 @@
 		<module>spring_mvc_04_data</module>
 		<module>spring_mvc_05_jdbc</module>
 		<module>spring_mvc_06_mybatis</module>
+		<module>spring_mvc_06_mybatis1</module>
 		<module>spring_mvc_ex_jdbc</module>
 		<module>spring_mvc_ex_mybatis</module>
 	</modules>

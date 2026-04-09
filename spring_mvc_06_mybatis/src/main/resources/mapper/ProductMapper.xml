@@ -60,4 +60,23 @@
 		DELETE FROM product WHERE prdNo=#{prdNo}
 	</delete>
 
+	<!-- 상품 번호 중복 확인 : String prdNoCheck(String prdNo) -->
+	<select id="prdNoCheck" resultType="string" parameterType="string">
+		SELECT prdNo FROM product WHERE prdNo=#{prdNo}
+	</select>
+
+	<!-- ArrayList<ProductVO> productSearch(HashMap<String, Object>  param, Model model) -->
+	<!-- 파라미터 hashmap에 저장된 key : type, keyword -->
+	<select id="productSearch" resultMap="prdResult" parameterType="hashmap">
+		SELECT * FROM product WHERE
+			<choose>
+				<when test="type != null and type.equals('prdName')">
+					prdName LIKE '%' ||#{keyword} || '%'
+				</when>
+				<when test="type != null and type.equals('prdCompany')">
+					prdCompany LIKE '%' || #{keyword} || '%'
+				</when>
+			</choose>
+	</select>
+
 </mapper>

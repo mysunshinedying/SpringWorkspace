@@ -16,5 +16,8 @@
 	<!--<a href="/mybatisEx/book/listAllBooks">전체 도서 정보 조회</a><br>-->
 	<a href="<c:url value='/book/listAllBooks'/>">전체 도서 정보 조회</a><br>
 	<a href="<c:url value='/book/newBookForm'/>">도서 등록</a>
+	<a href="<c:url value='/book/bookSearchForm1'/>">도서 검색(1)</a>
+	<a href="<c:url value='/book/bookSearchForm2'/>">도서 검색(2)</a>
+	<a href="<c:url value='/book/bookSearchForm3'/>">도서 검색(3)</a>
 </body>
 </html>

@@ -102,9 +102,9 @@ public class ProductController {
 	}
 	
 	// 상품 검색
-	@RequestMapping("/product/productSearchForm")
+	@RequestMapping("/product/productSearchForm1")
 	public String productSearchForm() {
-		return "product/productSearchForm";
+		return "product/productSearchForm1";
 	}
 	
 	//HashMap으로 받기
